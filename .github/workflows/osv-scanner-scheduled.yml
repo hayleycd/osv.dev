@@ -18,13 +18,14 @@ on:
   schedule:
     - cron: '12 12 * * 1'
   push:
-    branches: [ "master" ]
+    branches: [ master ]
 
-# Declare default permissions as read only.
 permissions: 
+  # Require writing security events to upload SARIF file to security tab
   security-events: write
+  # Only need to read contents
   contents: read
 
 jobs:
-  scan-pr-attempt:
+  scan-pr:
     uses: "google/osv-scanner/.github/workflows/osv-scanner-reusable-scheduled.yml@main"
